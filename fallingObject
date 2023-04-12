@@ -1,0 +1,42 @@
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.event.*;
+import java.nio.Buffer;
+
+public class fallingObject extends JPanel {
+    private JLabel b;
+    private int xcor;
+    private int ycor;
+    public fallingObject(JLabel img){
+        xcor = (int)(Math.random()*2560);
+        ycor = 0;
+        img.setLocation(xcor,ycor);
+        Rectangle r = new Rectangle(xcor,ycor,img.getX(),img.getY());
+        fall(img);
+    }
+    public void fall(JLabel img) {
+        Timer timer = new Timer(200, new ActionListener() {
+            int y = 0;
+            public void actionPerformed(ActionEvent e) {
+                y += 10;
+                b.setLocation(b.getX(), y);
+                repaint();
+
+                if (y + b.getHeight() > getHeight()) {
+                    ((Timer) e.getSource()).stop();
+                }
+            }
+        });
+        timer.start();
+    }
+    public int getx() {
+        return b.getX();
+    }
+    public int gety() {
+        return b.getY();
+    }
+
+}
