@@ -38,5 +38,11 @@ public class fallingObject extends JPanel {
     public int gety() {
         return b.getY();
     }
+    public int getwidth() {
+        return b.getWidth();
+    }
+    public int getheight() {
+        return b.getHeight();
+    }
 
 }
